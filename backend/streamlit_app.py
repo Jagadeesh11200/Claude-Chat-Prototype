@@ -2,7 +2,13 @@ from __future__ import annotations
 
 import base64
 import os
+import sys
+from pathlib import Path
 from typing import Any
+
+ROOT_DIR = Path(__file__).resolve().parents[1]
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
 
 from backend.gemini_client import GeminiPhase1Client
 from backend.phase1 import Phase1Request, analyze_phase1
