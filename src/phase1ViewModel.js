@@ -6,7 +6,7 @@ export function phase1NeedsClarification(result) {
         (result.input_warnings && result.input_warnings.length > 0) ||
         (result.impact_notes && result.impact_notes.length > 0) ||
         (result.assumptions && result.assumptions.length > 0) ||
-        (result.output_format_options && result.output_format_options.length > 0)
+        (result.output_format_options && result.output_format_options.length > 1)
       )
   );
 }
@@ -111,7 +111,7 @@ export function buildPhase1Steps(result) {
     });
   }
 
-  if ((result.output_format_options || []).length > 0) {
+  if ((result.output_format_options || []).length > 1) {
     steps.push({
       id: "output_format",
       type: "format",

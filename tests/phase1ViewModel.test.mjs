@@ -332,6 +332,22 @@ test("buildPhase1Steps orders assumptions, warnings, questions, then format", ()
   assert.equal(steps.at(-1).recommended, "Python code");
 });
 
+test("buildPhase1Steps skips a format choice when there is only one option", () => {
+  const result = {
+    exit_state: "enough_context",
+    questions: [],
+    assumptions: [],
+    input_warnings: [],
+    impact_notes: [],
+    output_format_options: ["Python code"],
+    recommended_output_format: "Python code"
+  };
+
+  assert.equal(phase1NeedsClarification(result), false);
+  assert.deepEqual(buildPhase1Steps(result), []);
+  assert.equal(summarizePhase1Selections(result, {}).format, "Python code");
+});
+
 test("summarizePhase1Selections reports selected output form", () => {
   const summary = summarizePhase1Selections(
     { recommended_output_format: "Python code" },

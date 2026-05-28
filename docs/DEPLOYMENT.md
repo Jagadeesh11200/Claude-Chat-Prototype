@@ -15,7 +15,7 @@ Backend and Streamlit secrets:
 ```text
 GEMINI_API_KEY=...
 GEMINI_MODEL=gemini-2.5-pro
-SQLITE_DB_PATH=./data/claude_code_prototype.sqlite
+SQLITE_DB_PATH=./data/claude_chat_prototype.sqlite
 MAX_REQUEST_BYTES=15728640
 ```
 
@@ -48,6 +48,25 @@ Open `http://127.0.0.1:5173`.
 
 Use a Python web service on Render, Railway, Fly.io, Cloud Run, or a similar host.
 
+Configure environment variables on the Python API host:
+
+```text
+GEMINI_API_KEY=...
+GEMINI_MODEL=gemini-2.5-pro
+SQLITE_DB_PATH=./data/claude_chat_prototype.sqlite
+CORS_ALLOW_ORIGIN=https://your-vercel-app.vercel.app
+MAX_REQUEST_BYTES=15728640
+```
+
+If the host does not inject `PORT`, also set:
+
+```text
+PHASE1_HOST=0.0.0.0
+PHASE1_PORT=8501
+```
+
+On Render, do not set `PORT` manually; Render provides it.
+
 Build command:
 
 ```bash
@@ -75,7 +94,7 @@ Add secrets in Streamlit app settings:
 ```toml
 GEMINI_API_KEY = "..."
 GEMINI_MODEL = "gemini-2.5-pro"
-SQLITE_DB_PATH = "./data/claude_code_prototype.sqlite"
+SQLITE_DB_PATH = "./data/claude_chat_prototype.sqlite"
 ```
 
 The Streamlit app is a backend console for running Phase 1 and Phase 2 directly. It is not the REST API consumed by Vercel.

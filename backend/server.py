@@ -14,7 +14,7 @@ from .settings import load_dotenv
 
 
 load_dotenv()
-DEFAULT_DB_PATH = os.getenv("SQLITE_DB_PATH", "./data/claude_code_prototype.sqlite")
+DEFAULT_DB_PATH = os.getenv("SQLITE_DB_PATH", "./data/claude_chat_prototype.sqlite")
 DEFAULT_HOST = os.getenv("PHASE1_HOST") or ("0.0.0.0" if os.getenv("PORT") else "127.0.0.1")
 DEFAULT_PORT = int(os.getenv("PORT") or os.getenv("PHASE1_PORT", "8501"))
 DEFAULT_CORS_ALLOW_ORIGIN = os.getenv("CORS_ALLOW_ORIGIN", "*")
